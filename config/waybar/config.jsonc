@@ -1,0 +1,231 @@
+{
+    // =========================================================================
+    //  Waybar Config — Hyprland · EndeavourOS · User: zusqii
+    // =========================================================================
+
+    // ── Bar ──────────────────────────────────────────────────────────────────
+    "layer":                  "top",
+    "position":               "top",
+    "height":                 28,
+    "spacing":                0,
+    "margin-top":             8,
+    "margin-left":            8,
+    "margin-right":           8,
+    "fixed-center":           true,
+    "reload_style_on_change": true,
+
+    // ── Module Layout ────────────────────────────────────────────────────────
+    "modules-left": [
+        "custom/menu",
+        "hyprland/workspaces",
+        "clock"
+    ],
+
+    "modules-center": [
+        "group/media-left",
+        "hyprland/window",
+        "group/status-right"
+    ],
+
+    "modules-right": [
+        "group/sysinfo",
+        "battery",
+        "custom/power"
+    ],
+
+    // =========================================================================
+    //  LEFT
+    // =========================================================================
+
+    // ── Rofi Launcher ─────────────────────────────────────────────────────────
+    "custom/menu": {
+        "format":   "𒉭",
+        "on-click": "pkill rofi || rofi -show drun",
+        "tooltip":  false
+    },
+
+    // ── Workspaces ────────────────────────────────────────────────────────────
+    "hyprland/workspaces": {
+        "on-click":       "activate",
+        "format":         "{icon}",
+        "format-icons": {
+            "active":  "󰮯",
+            "visible": "",
+            "default": "󰊠",
+            "urgent":  "󰊠"
+        },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": []
+        },
+        "on-scroll-up":   "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "sort-by-number": true
+    },
+
+    // ── Clock ─────────────────────────────────────────────────────────────────
+    "clock": {
+        "format":         "  {:%H:%M}",
+        "format-alt":     "  {:%a, %d %b %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode":      "month",
+            "weeks-pos": "left",
+            "format": {
+                "months":   "<span color='#cdd6f4'><b>{}</b></span>",
+                "days":     "<span color='#cdd6f4'><b>{}</b></span>",
+                "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+                "today":    "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    // =========================================================================
+    //  CENTER
+    // =========================================================================
+
+    // ── Media Pill — MPRIS + CAVA ─────────────────────────────────────────────
+    "group/media-left": {
+        "orientation": "inherit",
+        "modules": [
+            "mpris",
+            "custom/cava"
+        ]
+    },
+
+    "mpris": {
+        "interval":     2,
+        "format":         "{player_icon} {dynamic}",
+        "format-paused":  "{status_icon} {dynamic}",
+        "dynamic-order":  ["artist", "title"],
+        "max-length":     28,
+        "tooltip":        true,
+        "tooltip-format": "{player}: {title}\n{artist}",
+        "on-click":       "playerctl play-pause",
+        "on-click-right": "playerctl next",
+        "on-scroll-up":   "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "player-icons": {
+            "default":  "♪",
+            "spotify":  "",
+            "firefox":  "󰈹",
+            "chromium": "",
+            "mpv":      "󰐹",
+            "vlc":      "󰕼"
+        },
+        "status-icons": {
+            "playing": "▶",
+            "paused":  "⏸",
+            "stopped": "■"
+        },
+        "ignored-players": []
+    },
+
+    "custom/cava": {
+        "format":  "{}",
+        "exec":    "$HOME/.config/waybar/fulldock/scripts/cava.sh --10 --clean",
+        "exec-if": "test -f $HOME/.config/waybar/fulldock/scripts/cava.sh"
+    },
+
+    // ── Active Window ─────────────────────────────────────────────────────────
+    "hyprland/window": {
+        "format":  "{}",
+        "tooltip": false
+    },
+
+    // ── Status Pill — Network + Bluetooth + Power Profile ────────────────────
+    "group/status-right": {
+        "orientation": "inherit",
+        "modules": [
+            "network",
+            "bluetooth",
+            "power-profiles-daemon"
+        ]
+    },
+
+    "network": {
+        "format-icons":                ["󰖙", "󰔟", "󰔢", "󰔥", "󰔨"],
+        "format":                      "{icon}",
+        "format-wifi":                 "{icon}",
+        "format-ethernet":             "󰌘",
+        "format-disconnected":         "󰔮",
+        "tooltip-format-wifi":         "{essid} ({signalStrength}%)\n⇣ {bandwidthDownBytes}  ⇡ {bandwidthUpBytes}",
+        "tooltip-format-ethernet":     "Ethernet\n⇣ {bandwidthDownBytes}  ⇡ {bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "interval":  3,
+        "on-click":  "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format":               "󰂯",
+        "format-disabled":      "󰂲",
+        "format-off":           "󰂲",
+        "format-connected":     "󰂱",
+        "format-no-controller": "",
+        "tooltip-format":           "Bluetooth: {status}",
+        "tooltip-format-connected": "{num_connections} device(s) connected",
+        "on-click": "blueman-manager"
+    },
+
+    "power-profiles-daemon": {
+        "format":         "{icon}",
+        "tooltip-format": "Profile: {profile}\nDriver: {driver}",
+        "format-icons": {
+            "default":     "󰾹",
+            "performance": "󰓕",
+            "balanced":    "󰾹",
+            "power-saver": "󰾺"
+        }
+    },
+
+    // =========================================================================
+    //  RIGHT
+    // =========================================================================
+
+    // ── CPU + RAM Pill ────────────────────────────────────────────────────────
+    "group/sysinfo": {
+        "orientation": "inherit",
+        "modules": ["cpu", "memory"]
+    },
+
+    "cpu": {
+        "interval":       3,
+        "format":         "󰍛 {usage}%",
+        "tooltip-format": "CPU: {usage}%\nLoad: {load}",
+        "on-click":       "kitty -e btop"
+    },
+
+    "memory": {
+        "interval":       3,
+        "format":         "󰾆 {used:0.1f}G",
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G",
+        "on-click":       "kitty -e btop"
+    },
+
+    // ── Battery Pill ──────────────────────────────────────────────────────────
+    "battery": {
+        "states": {
+            "good":     95,
+            "warning":  20,
+            "critical": 10
+        },
+        "format":          "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged":  "󱘖 {capacity}%",
+        "format-icons":    ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format":  "{timeTo} — {power}W"
+    },
+
+    // ── Power Menu Pill ───────────────────────────────────────────────────────
+    "custom/power": {
+        "format":         "⏻",
+        "tooltip":        true,
+        "tooltip-format": "Power Menu",
+        "on-click":       "wlogout --protocol layer-shell",
+        "on-click-right": "systemctl suspend"
+    }
+}

@@ -1,0 +1,260 @@
+/*
+ * ╔══════════════════════════════════════════════════════════════════════════╗
+ * ║  Waybar Style — zusqii                                                   ║
+ * ║  Catppuccin Mocha · floating pills · mono font for centered icons       ║
+ * ╚══════════════════════════════════════════════════════════════════════════╝
+ */
+
+/* ── Global — mono font so every icon sits perfectly centered ───────────── */
+* {
+	font-family: "JetBrainsMono Nerd Font Mono", "Symbols Nerd Font Mono", monospace;
+	font-size: 13px;
+	font-weight: bold;
+	min-height: 0;
+	border: none;
+	outline: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* ── Bar ────────────────────────────────────────────────────────────────── */
+window#waybar {
+	background: transparent;
+	color: #cdd6f4;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	background: transparent;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PILL BASE — every module gets this
+   ══════════════════════════════════════════════════════════════════════════ */
+#custom-menu,
+#workspaces,
+#clock,
+#mpris,
+#custom-conn-toggle,
+#network,
+#bluetooth,
+#cpu,
+#memory,
+#battery,
+#custom-power {
+	background: transparent;
+	border: none;
+	border-radius: 999px;
+	padding: 0 13px;
+	margin: 4px 3px;
+	min-height: 30px;
+}
+
+/* ── Hover ──────────────────────────────────────────────────────────────── */
+#custom-menu:hover,
+#clock:hover,
+#mpris:hover,
+#network:hover,
+#bluetooth:hover,
+#cpu:hover,
+#memory:hover,
+#battery:hover {
+	background: #313244;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   LEFT
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Menu ───────────────────────────────────────────────────────────────── */
+#custom-menu {
+	color: #ffffff;
+	font-size: 15px;
+	padding: 0 15px;
+	background: rgba(30, 30, 46, 0.4);
+        border: none;}
+
+#custom-menu:hover {
+	color: #b4befe;
+	background: #313244;
+}
+
+/* ── Workspaces pill ────────────────────────────────────────────────────── */
+#workspaces {
+    background: rgba(30, 30, 46, 0.2);  /* outer pill — more transparent */
+    border-radius: 999px;
+    border: 1px solid rgba(88, 91, 112, 0.3);
+    padding: 0 4px;
+    margin: 4px 3px;
+}
+
+#workspaces button {
+    all: unset;
+    background: rgba(30, 30, 46, 0.3);
+    border-radius: 999px;
+    border: 1px solid rgba(88, 91, 112, 0.5);
+    min-width: 20px;
+    min-height: 20px;
+    margin: 4px 3px;
+    padding: 0 8px;
+    color: #ffffff;
+    transition: all 0.30s ease;
+}
+
+#workspaces button:hover {
+	color: #cdd6f4;
+	background: #313244;
+}
+
+#workspaces button.active {
+	color: #11111b;
+	background: #cba6f7;
+	min-width: 26px;
+}
+
+#workspaces button.urgent {
+	color: #11111b;
+	background: #f38ba8;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   CENTER
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Clock ──────────────────────────────────────────────────────────────── */
+#clock {
+	color: #ffffff;
+	font-size: 14px;
+	letter-spacing: 1px;
+	background: rgba(30, 30, 46, 0.4);
+	border: none;
+}
+
+/* ── MPRIS media player ─────────────────────────────────────────────────── */
+#mpris {
+	color: #ffffff;
+	font-size: 12px;
+        background: rgba(30, 30, 46, 0.4);
+        border: none;
+}
+
+#mpris.paused {
+	color: #ffffff;
+}
+
+#mpris.stopped {
+	color: #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RIGHT
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Connection toggle arrow ────────────────────────────────────────────── */
+#custom-conn-toggle {
+	color: #ffffff;
+	font-size: 15px;
+	padding: 0 11px;
+}
+
+#custom-conn-toggle:hover {
+	background: #ffffff;
+	color: #b4befe;
+}
+
+/* ── Network ────────────────────────────────────────────────────────────── */
+#network {
+	color: #ffffff;
+	background: rgba(30, 30, 46, 0.2);
+}
+
+#network.disconnected {
+	color: #0000ff;
+}
+
+/* ── Bluetooth ──────────────────────────────────────────────────────────── */
+#bluetooth {
+	color: #ffffff;
+        background: rgba(30, 30, 46, 0.2);
+}
+
+#bluetooth.connected {
+	color: #ffffff;
+}
+
+#bluetooth.disabled {
+	color: #0000ff;
+}
+
+/* ── CPU ────────────────────────────────────────────────────────────────── */
+#cpu {
+	color: #ffffff;
+        background: rgba(30, 30, 46, 0.4);
+}
+
+/* ── Memory ─────────────────────────────────────────────────────────────── */
+#memory {
+	color: #ffffff;
+        background: rgba(30, 30, 46, 0.4);
+}
+
+/* ── Battery ────────────────────────────────────────────────────────────── */
+#battery {
+	color: #ffffff;
+        background: rgba(30, 30, 46, 0.4);
+}
+
+#battery.charging {
+	color: #ffffff;
+}
+
+#battery.plugged {
+	color: #ffffff;
+}
+
+#battery.warning:not(.charging) {
+	color: #f9e234;
+}
+
+#battery.critical:not(.charging) {
+	color: #0000ff;
+	animation-name: battery-blink;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+@keyframes battery-blink {
+	0%   { opacity: 1;   }
+	50%  { opacity: 0.3; }
+	100% { opacity: 1;   }
+}
+
+/* ── Power ──────────────────────────────────────────────────────────────── */
+#custom-power {
+	color: #f38ba8;
+	padding: 0 11px;
+        background: rgba(30, 30, 46, 0.4);
+}
+
+#custom-power:hover {
+	background: #f38ba8;
+	color: #11111b;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TOOLTIPS
+   ══════════════════════════════════════════════════════════════════════════ */
+tooltip {
+	background: #181825;
+	border: 1px solid #313244;
+	border-radius: 14px;
+	color: #cdd6f4;
+	padding: 6px 12px;
+}
+
+tooltip label {
+	color: #cdd6f4;
+	font-size: 12px;
+}

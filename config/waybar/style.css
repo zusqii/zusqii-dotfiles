@@ -1,0 +1,317 @@
+/* ── Pywal Colors ────────────────────────────────────────────────────────── */
+@import url("/home/zusqii/.cache/wal/colors-waybar.css");
+
+/* ── Global Reset ────────────────────────────────────────────────────────── */
+* {
+  border:        none;
+  border-radius: 0;
+  min-height:    0;
+  font-family:   "JetBrainsMono Nerd Font Mono", "Symbols Nerd Font Mono", monospace;
+  font-size:     12px;
+  font-weight:   600;
+}
+
+/* ── Bar Window ──────────────────────────────────────────────────────────── */
+window#waybar {
+  background-color: transparent;
+  color:            @foreground;
+}
+
+/* ── Strip left/right island backgrounds — each module is its own pill ─────── */
+.modules-left,
+.modules-right {
+  background:    transparent;
+  border:        none;
+  border-radius: 0;
+  padding:       0;
+  margin:        0;
+}
+
+/* ── Center keeps its unified island pill ────────────────────────────────── */
+.modules-center {
+  background-color: alpha(@background, 0.80);
+  border-radius:    99px;
+  border:           1px solid alpha(@color6, 0.25);
+  padding:          4px 10px;
+  margin:           0;
+}
+
+/* =============================================================================
+   LEFT — LAUNCHER PILL
+   ============================================================================= */
+
+/* ── Rofi Launcher ───────────────────────────────────────────────────────── */
+#custom-menu {
+  font-size:        18px;
+  color:            @color4;
+  padding:          0 15px;
+  margin:           1px 3px;
+  border-radius:    99px;
+  background-color: alpha(@background, 0.80);
+  border:           1px solid alpha(@color4, 0.25);
+}
+
+#custom-menu:hover {
+  color:            @background;
+  background-color: @color4;
+}
+
+/* =============================================================================
+   LEFT — WORKSPACES PILL
+   ============================================================================= */
+
+/* ── Workspace Container ─────────────────────────────────────────────────── */
+#workspaces {
+  background-color: alpha(@background, 0.80);
+  border:           1px solid alpha(@color4, 0.25);
+  border-radius:    99px;
+  padding:          0 6px;
+  margin:           1px 3px;
+}
+
+/* ── Workspace Buttons ───────────────────────────────────────────────────── */
+#workspaces button {
+  all:           unset;
+  color:         alpha(@foreground, 0.45);
+  padding:       0 6px;
+  min-width:     16px;
+  min-height:    18px;
+  font-size:     13px;
+  border-radius: 99px;
+  border:        1px solid alpha(@color8, 0.35);
+  background:    alpha(@background, 0.30);
+  margin:        2px 2px;
+  transition:    all 0.2s ease;
+}
+
+#workspaces button.empty {
+  color:      alpha(@foreground, 0.20);
+  border-color: alpha(@color8, 0.15);
+}
+
+#workspaces button.visible {
+  color:   alpha(@foreground, 0.70);
+}
+
+#workspaces button.active {
+  color:         @foreground;
+  background:    alpha(@color4, 0.25);
+  border:        1px solid alpha(@color4, 0.50);
+  font-size:     14px;
+  min-width:     20px;
+  padding:       0 7px;
+}
+
+#workspaces button:hover {
+  color:      @foreground;
+  background: alpha(@foreground, 0.12);
+  border-color: alpha(@foreground, 0.25);
+}
+
+/* =============================================================================
+   LEFT — CLOCK PILL
+   ============================================================================= */
+
+/* ── Clock ───────────────────────────────────────────────────────────────── */
+#clock {
+  font-size:        13px;
+  font-weight:      900;
+  letter-spacing:   1px;
+  color:            @foreground;
+  padding:          0 14px;
+  margin:           1px 3px;
+  border-radius:    99px;
+  background-color: alpha(@background, 0.80);
+  border:           1px solid alpha(@color6, 0.25);
+}
+
+/* =============================================================================
+   CENTER — MEDIA PILL (MPRIS + CAVA)
+   ============================================================================= */
+
+/* ── Media Group ─────────────────────────────────────────────────────────── */
+#group-media-left {
+  background-color: alpha(@background, 0.80);
+  border-radius:    99px;
+  border:           1px solid alpha(@color5, 0.25);
+  padding:          0 8px;
+  margin:           1px 4px;
+}
+
+/* ── MPRIS ───────────────────────────────────────────────────────────────── */
+#mpris {
+  color:       @color5;
+  font-size:   11px;
+  font-weight: 700;
+  padding:     0 4px;
+}
+
+/* ── Cava Visualizer ─────────────────────────────────────────────────────── */
+#custom-cava {
+  color:     @color4;
+  font-size: 11px;
+  padding:   0 4px;
+}
+
+/* =============================================================================
+   CENTER — ACTIVE WINDOW PILL
+   ============================================================================= */
+
+/* ── Window Title ────────────────────────────────────────────────────────── */
+#window {
+  color:            alpha(@foreground, 0.85);
+  font-size:        12px;
+  font-weight:      600;
+  padding:          0 14px;
+  margin:           1px 4px;
+  background-color: alpha(@background, 0.80);
+  border-radius:    99px;
+  border:           1px solid alpha(@color6, 0.20);
+}
+
+window#waybar.empty #window {
+  background: transparent;
+  border:     none;
+  color:      transparent;
+  padding:    0;
+  margin:     0;
+}
+
+/* =============================================================================
+   CENTER — STATUS PILL (NETWORK + BLUETOOTH + POWER PROFILE)
+   ============================================================================= */
+
+/* ── Status Group ────────────────────────────────────────────────────────── */
+#group-status-right {
+  background-color: alpha(@background, 0.80);
+  border-radius:    99px;
+  border:           1px solid alpha(@color6, 0.25);
+  padding:          0 8px;
+  margin:           1px 4px;
+}
+
+/* ── Network ─────────────────────────────────────────────────────────────── */
+#network {
+  color:     @foreground;
+  font-size: 14px;
+  padding:   0 5px;
+}
+
+#network.disconnected {
+  color: alpha(@foreground, 0.35);
+}
+
+/* ── Bluetooth ───────────────────────────────────────────────────────────── */
+#bluetooth {
+  color:     @foreground;
+  font-size: 14px;
+  padding:   0 5px;
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+  color: alpha(@foreground, 0.35);
+}
+
+/* ── Power Profiles Daemon ───────────────────────────────────────────────── */
+#power-profiles-daemon {
+  color:     @foreground;
+  font-size: 14px;
+  padding:   0 5px;
+}
+
+#power-profiles-daemon.performance { color: @color1; }
+#power-profiles-daemon.balanced    { color: @foreground; }
+#power-profiles-daemon.power-saver { color: @color2; }
+
+/* =============================================================================
+   RIGHT — CPU + RAM PILL
+   ============================================================================= */
+
+/* ── Sysinfo Group ───────────────────────────────────────────────────────── */
+#group-sysinfo {
+  background-color: alpha(@background, 0.80);
+  border-radius:    99px;
+  border:           1px solid alpha(@color6, 0.20);
+  padding:          0 8px;
+  margin:           1px 3px;
+}
+
+/* ── CPU ─────────────────────────────────────────────────────────────────── */
+#cpu {
+  color:     @color4;
+  font-size: 12px;
+  padding:   0 5px;
+}
+
+/* ── Memory ──────────────────────────────────────────────────────────────── */
+#memory {
+  color:     @color6;
+  font-size: 12px;
+  padding:   0 5px;
+}
+
+/* =============================================================================
+   RIGHT — BATTERY PILL
+   ============================================================================= */
+
+/* ── Battery ─────────────────────────────────────────────────────────────── */
+#battery {
+  color:            @color2;
+  font-size:        12px;
+  font-weight:      700;
+  padding:          0 14px;
+  margin:           1px 3px;
+  border-radius:    99px;
+  background-color: alpha(@background, 0.80);
+  border:           1px solid alpha(@color2, 0.25);
+}
+
+#battery.good     { color: @color2; }
+#battery.warning  { color: @color3; border-color: alpha(@color3, 0.35); }
+#battery.critical { color: @color1; border-color: alpha(@color1, 0.35); }
+
+#battery.charging,
+#battery.plugged {
+  color:        @color2;
+  border-color: alpha(@color2, 0.40);
+}
+
+/* =============================================================================
+   RIGHT — POWER MENU PILL
+   ============================================================================= */
+
+/* ── Power Button ────────────────────────────────────────────────────────── */
+#custom-power {
+  color:            @color1;
+  font-size:        15px;
+  padding:          0 14px;
+  margin:           1px 3px;
+  border-radius:    99px;
+  background-color: alpha(@background, 0.80);
+  border:           1px solid alpha(@color1, 0.25);
+}
+
+#custom-power:hover {
+  color:            @background;
+  background-color: @color1;
+}
+
+/* =============================================================================
+   TOOLTIPS
+   ============================================================================= */
+
+/* ── Tooltip Container ───────────────────────────────────────────────────── */
+tooltip {
+  background:    alpha(@background, 0.95);
+  border:        1px solid alpha(@foreground, 0.15);
+  border-radius: 12px;
+  padding:       4px 8px;
+}
+
+/* ── Tooltip Text ────────────────────────────────────────────────────────── */
+tooltip label {
+  color:     @foreground;
+  font-size: 11px;
+  padding:   2px;
+}

@@ -1,0 +1,211 @@
+/* =========================================================
+   WAYBAR STYLESHEET
+   Uses Pywal color variables from colors-waybar.css
+   ========================================================= */
+
+@import "/home/zusqii/.cache/wal/colors-waybar.css";
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+}
+
+/* =========================================================
+   BAR BACKGROUND
+   ========================================================= */
+
+window#waybar {
+    background: transparent;
+}
+
+/* =========================================================
+   SHARED PILL STYLE — Outer containers
+   ========================================================= */
+
+#custom-launcher,
+#workspaces,
+#clock,
+#battery,
+#custom-power,
+#group-dock,
+#group-sysstats,
+#group-music-pill {
+    background: alpha(@background, 0.7);
+    color: @color4;
+    border-radius: 15px;
+    padding: 2px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================================
+   LEFT SECTION
+   ========================================================= */
+
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces button {
+    color: @color4;
+    padding: 0 5px;
+}
+
+#workspaces button.active {
+    color: @color2;
+}
+
+#clock {
+    margin-left: 4px;
+}
+
+/* =========================================================
+   CENTER SECTION — DOCK
+   ========================================================= */
+
+#group-dock {
+    padding: 4px 8px;
+    background: transparent;
+    border: none;
+}
+
+/* Music + Cava pill */
+#group-music-pill {
+    background: alpha(@background, 1.0);
+    border-radius: 15px;
+    padding: 2px 12px;
+    margin: 0 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#custom-music,
+#custom-cava {
+    background: alpha(@background, 0.3);
+    color: @color5;
+    border-radius: 15px;
+    padding: 2px 12px;
+}
+
+/* Active window title */
+#window {
+    background: rgba(0, 0, 0, 0.5);
+    color: @color4;
+    border-radius: 15px;
+    padding: 0 15px;
+    margin: 0 10px;
+}
+
+/* =========================================================
+   TRAY DRAWER — Arrow + hidden modules
+   ========================================================= */
+
+#group-tray-drawer {
+    background: alpha(@background, 0.7);
+    border-radius: 15px;
+    padding: 2px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 4px;
+}
+
+/* The arrow icon — acts as the toggle */
+#custom-drawer-arrow {
+    color: @color4;
+    font-size: 14px;
+    padding: 0 4px;
+    transition: all 0.3s ease;
+}
+
+#custom-drawer-arrow:hover {
+    color: @color2;
+}
+
+/* Shared style for all drawer child modules */
+.drawer-child {
+    margin-left: 6px;
+    padding: 0 6px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+/* WiFi */
+#network {
+    color: @color8;
+}
+
+#network.disconnected {
+    color: @color1;
+}
+
+#network:hover {
+    color: @color7;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+/* Bluetooth */
+#bluetooth {
+    color: @color8;
+}
+
+#bluetooth.disabled {
+    color: @color7;
+}
+
+#bluetooth:hover {
+    color: @color8;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+/* Power profile */
+#power-profiles-daemon {
+    color: @color8;
+}
+
+#power-profiles-daemon.performance {
+    color: @color1;  /* Red — high power warning */
+}
+
+#power-profiles-daemon.balanced {
+    color: @color4;
+}
+
+#power-profiles-daemon.power-saver {
+    color: @color2;  /* Green — saving power */
+}
+
+#power-profiles-daemon:hover {
+    color: @color2;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+/* =========================================================
+   RIGHT SECTION
+   ========================================================= */
+
+#group-sysstats {
+    padding: 4px;
+}
+
+#cpu,
+#memory {
+    background: rgba(0, 0, 0, 0.4);
+    color: @foreground;
+    border-radius: 15px;
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+#battery {
+    margin: 0 4px;
+}
+
+#custom-power {
+    margin-left: 4px;
+}

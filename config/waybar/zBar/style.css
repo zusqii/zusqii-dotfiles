@@ -1,0 +1,46 @@
+@import url("/home/zusqii/.cache/wal/colors-waybar.css");
+
+* {
+    font-family: 'JetBrainsMono Nerd Font Propo';
+    font-size: 12px;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+/* --- THE CENTER DOCK (AxShell style) --- */
+.modules-center {
+    background-color: @background;
+    border: 1px solid alpha(@color6, 0.3);
+    border-top: none; 
+    border-radius: 0 0 20px 20px; /* Flat top, rounded bottom */
+    padding: 0 10px;
+}
+
+#workspaces {
+    background: alpha(@color6, 0.2);
+    margin: 4px 5px;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+/* --- THE SIDE MODULES (Floating Pills) --- */
+.modules-left, .modules-right {
+    background-color: @background;
+    border: 1px solid alpha(@color6, 0.3);
+    border-radius: 15px;
+    margin: 5px 10px;
+    padding: 2px 12px;
+}
+
+/* Styling your specific modules */
+#custom-active_window {
+    color: @foreground;
+}
+
+#cpu, #memory, #clock, #pulseaudio {
+    margin: 0 6px;
+}

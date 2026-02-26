@@ -1,0 +1,161 @@
+{
+    // =========================================================
+    //  WAYBAR CONFIG
+    // =========================================================
+
+    // --- Bar Layout ---
+    "layer": "top",
+    "position": "top",
+    "margin-top": 8,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 10,
+
+    "modules-left":   ["custom/launcher", "hyprland/workspaces", "clock"],
+    "modules-center": ["group/dock"],
+    "modules-right":  ["group/sysstats", "battery", "custom/power"],
+
+    // =========================================================
+    //  LEFT SECTION
+    // =========================================================
+
+    "custom/launcher": {
+        "format": "󰣇",
+        "on-click": "rofi -show drun",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4, 5, 6]
+        }
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%a, %d %b %Y}",
+        "tooltip": false
+    },
+
+    // =========================================================
+    //  CENTER SECTION — DOCK
+    // =========================================================
+
+    "group/dock": {
+        "orientation": "horizontal",
+        "modules": [
+            "group/music-pill",
+            "hyprland/window",
+            "group/tray-drawer"
+        ]
+    },
+
+    // Music + Cava pill
+    "group/music-pill": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/music",
+            "custom/cava"
+        ]
+    },
+
+    "custom/music": {
+        "format": "󰎆 {}",
+        "exec": "playerctl metadata --format '{{title}}' || echo 'Silence'",
+        "interval": 2,
+        "max-length": 20
+    },
+
+    "custom/cava": {
+        "format": "{}",
+        "exec": "$HOME/.config/waybar/fulldock/scripts/cava.sh --10 --clean",
+        "exec-if": "test -f $HOME/.config/waybar/fulldock/scripts/cava.sh"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true,
+        "max-length": 25
+    },
+
+    // Tray drawer — arrow (click) reveals wifi / bluetooth / power profile
+    "group/tray-drawer": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "drawer-child",
+            "transition-left-to-right": true
+        },
+        "modules": [
+            "custom/drawer-arrow",
+            "network",
+            "bluetooth",
+            "power-profiles-daemon"
+        ]
+    },
+
+    "custom/drawer-arrow": {
+        "format": "󰅂",
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": "󰈀 ",
+        "format-disconnected": "󰖪 ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format": "󰂯 ",
+        "format-disabled": "󰂲 ",
+        "format-connected": "󰂱 ",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{device_enumerate}",
+        "on-click": "blueman-manager"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default":      "󰈐 ",
+            "performance":  "󱐋 ",
+            "balanced":     "󰾅 ",
+            "power-saver":  "󰌪 "
+        }
+    },
+
+    // =========================================================
+    //  RIGHT SECTION
+    // =========================================================
+
+    "group/sysstats": {
+        "orientation": "horizontal",
+        "modules": ["cpu", "memory"]
+    },
+
+    "cpu": {
+        "format": " ;{usage}%"
+    },
+
+    "memory": {
+        "format": "󰕖 ;{used:0.1f}GiB"
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["󰂄", "", "", "", ""]
+    },
+
+    "custom/power": {
+        "format": "󰐥",
+        "on-click": "wlogout",
+        "tooltip": false
+    }
+}

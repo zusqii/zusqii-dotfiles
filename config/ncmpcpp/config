@@ -1,0 +1,33 @@
+mpd_host = 127.0.0.1
+mpd_port = 6600
+
+# Layout
+user_interface = alternative
+alternative_ui_separator_color = blue
+alternative_header_first_line_format = $b$6{%t}$/b$9 - $3{%a}
+alternative_header_second_line_format = $b{%A}$/b - {%y}
+
+# Song list
+song_list_format = {$4%a$9 - }{%t}|{$8%f$9} $R{$3%l$9}
+song_status_format = {%t} - {%a}
+song_library_format = {%a - }{%t}
+
+# Columns
+song_columns_list_format = (50)[white]{t} (30)[blue]{a} (20)[green]{l}
+
+# Display
+playlist_display_mode = columns
+browser_display_mode = columns
+search_engine_display_mode = columns
+playlist_editor_display_mode = columns
+
+# Album art
+
+# Visualizer
+visualizer_data_source = /tmp/mpd.fifo
+visualizer_output_name = Visualizer
+visualizer_type = spectrum
+visualizer_look = ▋▋
+
+# Colors
+colors_enabled = yes
