@@ -1,3 +1,3 @@
 old dotfiles.
 
-new ones at z.dotfiles
+new ones at z.hyprdots
